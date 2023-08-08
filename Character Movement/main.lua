@@ -27,8 +27,7 @@ function love.load()
     cam = camera()
     -- loading the map
     map()
-    Collid()
-    
+    sound()
 
     math.randomseed(os.time())
 
@@ -135,11 +134,12 @@ function map()
     local mapH = gameMap.height * gameMap.tileheight
 
     walls = {}
-    if gameMap.layers["Ellipse"] then
+   --[[ if gameMap.layers["Ellipse"] then
         for i, obj in pairs(gameMap.layers["Ellipse"].objects) do
             local ellipse = world:newEllipseCollider(obj.x, obj.y, obj.width,obj.height)
         end
-    end
+    end 
+    --]]
     if gameMap.layers["Walls"]then
         for i, obj in pairs(gameMap.layers["Walls"].objects) do
             local wall = world:newRectangleCollider(obj.x, obj.y, obj.width, obj.height)
@@ -184,8 +184,22 @@ function map()
 
 end
 
-function Collid()
-   
-    
+function sound()
+    sounds = {}
+    sounds.blip = love.audio.newSource("sounds/blip.wav","static")
+    sounds.music = love.audio.newSource("sounds/music.mp3","stream")
+    sounds.music:setLooping(true)
+    isPlaying = true
+    sounds.music:play()
+end
+
+
+function love.keypressed(key)
+    if key == "space" then
+        sounds.blip:play()
+    end
+
+    if key == "z" then
+       for 
     
 end
