@@ -200,6 +200,8 @@ function love.keypressed(key)
     end
 
     if key == "z" then
-       for 
+       
     
+    end
+
 end
